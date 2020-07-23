@@ -5,13 +5,13 @@ import { Router, Route, Switch} from 'react-router'
 import { createBrowserHistory } from 'history'
 import {Provider} from './reducers'
 import {SnackbarProvider} from 'notistack';
-
+import PrivateRoute from './PrivateRoute'
 const hist = createBrowserHistory();
 
 function Unit(){
 	return(
 		<Switch>
-		    <Route path="/dashboard/" component={Dashboard} />
+		    <PrivateRoute path="/dashboard/" component={Dashboard} />
 		    <Route path="/" component={Main} />
 		</Switch>		
 	)

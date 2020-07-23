@@ -3,7 +3,10 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core/styles'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import {useThisData} from '../reducers';
+import main from '../helpers';
+import DividerC from '../images/DividerC.svg'
 
 export const MenuBox = withStyles({  //Menu Button
     root: {
@@ -17,10 +20,17 @@ export const MenuBox = withStyles({  //Menu Button
   })(Button)
 
 export default function App(){
+    const [state, dispatch] = useThisData();
+    function getOut(){
+        dispatch({name: 'log out'})
+    }
+
+    if(!state.status.isAuth) return (<Redirect to="/main"/>);
     return (
         <>
             <Typography style={{fontSize: '32px', fontWeight: 'bold'}}>WELCOME ADMINISTRATOR!</Typography>
             <Typography style={{fontSize: '24px', fontWeight: 'bold'}}>choose one of the menus below</Typography>
+            <img src={DividerC} alt="divider"/>
             <div style={{marginTop: '3em'}}>
             <Grid container direction="row" justify="center" alignItem="center">
                 <Link to="/dashboard/add" style={{textDecoration: 'none'}}>
@@ -58,8 +68,7 @@ export default function App(){
                     </Grid>
                 </MenuBox>
                 </Link>
-                <Link to="/main" style={{textDecoration: 'none'}}>
-                <MenuBox style={{margin: '0.5em 1em', padding: '0.5em'}}>
+                <MenuBox onClick={getOut} style={{margin: '0.5em 1em', padding: '0.5em'}}>
                     <Grid container direction="column" style={{height: '8em', width: '100%'}}>
                     <div style={{height: '50%'}}></div>
                     <div style={{textAlign: 'end'}}>
@@ -68,7 +77,6 @@ export default function App(){
                     </div>
                     </Grid>
                 </MenuBox>
-                </Link>
             </Grid>
             </div>
         </>

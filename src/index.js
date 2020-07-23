@@ -32,7 +32,6 @@ function App3(props){
 
 	return (
 		<>
-			<h2> HELLO WORLD!</h2>
 		</>
 	)
 }

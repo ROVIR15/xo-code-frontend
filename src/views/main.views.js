@@ -11,17 +11,25 @@ import Modal from '@material-ui/core/Modal'
 import Certificate from '../components/show.certificate'
 import Portal from '../components/portal'
 
+import ArrowD from '../images/Arrow.svg'
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  section: {
+    margin: 0
+  },
+  img: {
+    marginBottom: '3rem'
   }
 }));
 
 export const MonotonTypo = withStyles({root: {
     fontFamily: "'Monoton', cursive",
-    fontSize: '113px'
+    fontSize: '113px',
+    color: 'white'    
 }})(Typography)
 
 export default function MainPages(){
@@ -45,18 +53,19 @@ export default function MainPages(){
 
     return (
     <>
-      <Section>
+      <Section className={classes.section}>
+        <img src={ArrowD} alt="arrow d" className={classes.img}/>
         <MonotonTypo variant="h1">CFLT</MonotonTypo>
         <div style={{
-          background: 'black',
+          background: 'white',
           width: '6em',
           height: '5px',
           margin: 'auto'
         }}></div>
-        <Typography variant="body1" style={{fontSize: '1.25rem'}}> center foreign language training </Typography>
+        <Typography variant="body1" style={{fontSize: '1.25rem', color: 'white'}}> center foreign language training </Typography>
         <SearchBox data={state.data} change={setSelected} next={ (selected) => { showModal(selected)} }/>
       </Section>
-      <Typography style={{fontWeight: 'bold', textAlign: 'center'}}>TOEFL Certificate secured by Blockchain-Enabled application</Typography>
+      <Typography style={{fontWeight: 'bold', textAlign: 'center', color: 'white'}}>TOEFL Certificate secured by Blockchain-Enabled application</Typography>
         <Portal id="modal">
           <Modal
             aria-labelledby="transition-modal-title"
@@ -68,7 +77,6 @@ export default function MainPages(){
             BackdropProps={{
               timeout: 500,
             }}
-            onClick={showModal}
           >
             <Certificate data={selected} close={showModal}/>
           </Modal>        

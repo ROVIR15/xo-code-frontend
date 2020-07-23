@@ -5,6 +5,9 @@ import Typography from '@material-ui/core/Typography'
 import {CertificatePaper} from './Certificate'
 import {MonotonTypo} from './MonotonTypo'
 import {RedButton} from './buttons'
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 export default function App(props){
     
@@ -14,7 +17,7 @@ export default function App(props){
             justify="center"
             alignItem="center"
         >
-            <CertificatePaper>
+            <CertificatePaper ref={ref}>
             <div>
             <MonotonTypo style={{fontSize: '46px', color: 'white', textAlign: 'center'}}>CFLT</MonotonTypo>
             <div style={{
@@ -75,9 +78,13 @@ export default function App(props){
             alignItem="center"
             style={{margin: '2.75em 0 0.5em'}}
             >
-            <Button style={{margin: '0 1em', marginRight: '3em', fontSize: '16px'}}>
+    <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => 
+            <Button onClick={toPdf} style={{margin: '0 1em', marginRight: '3em', fontSize: '16px'}}>
                 SAVE
             </Button>
+        }
+    </Pdf>
             <RedButton onClick={props.close} variant="outlined">
                 BACK
             </RedButton>

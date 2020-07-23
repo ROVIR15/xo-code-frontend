@@ -7,7 +7,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     justify: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    background: 'inherit',
+    boxShadow: 'unset'
   },
   control: {
       display: 'flex',

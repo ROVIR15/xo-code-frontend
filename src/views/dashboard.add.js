@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 function App(props){
     const classes = useStyles()
-    const [activeStep, setActiveStep] = React.useState(0);
+    const [activeStep, setActiveStep] = React.useState(2);
     const [pipeline, setPipeline] = React.useState([{ identification_id: 'A12.2016.05579', name: 'Baran', listening_score: 100, writing_score: 90, reading_score: 80 }])
     const steps = getSteps();
 

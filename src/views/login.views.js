@@ -15,7 +15,8 @@ import main from '../helpers'
 export const BPaper = withStyles({
     root: {
       border: '2px solid black',
-      borderRadius: '0.75em'
+      borderRadius: '0.75em',
+      background: 'rgba(255,255,255,0.57)'
     }
 })(Paper)
 
@@ -58,9 +59,12 @@ export default function LoginPages(){
                     <Typography style={{fontSize: '10px', fontWeight: 'bold'}}> center foreign language training </Typography>
                     </div>
                     <Typography style={{margin: '1.5em', fontWeight: 'bold'}}> LOG IN </Typography>
+                    {!_s.status.isAuth && _s.status.load ? (<Typography variant="body2"
+                        style={{color: 'red', fontWeight: 'bold'}}
+                    >Please check your username or password</Typography>) : null}
                     <form style={{display: 'inherit', flexDirection: 'column', minWidth: '20em'}} >
                     <LogFrom onChange={change} required={true} name="username" placeholder="username" value={state.username}/>
-                    <LogFrom onChange={change} required={true} name="password" placeholder="password" value={state.password}/>
+                    <LogFrom onChange={change} required={true} name="password" type="password" placeholder="password" value={state.password}/>
                     <PrimButton onClick={hitByUser} disableElevation>
                         HIT ME
                     </PrimButton>

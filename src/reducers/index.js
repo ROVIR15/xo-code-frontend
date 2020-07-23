@@ -16,6 +16,8 @@ const Reducer = (state, action) => {
 			return {...state, data: action.payload}
 		case 'logActivity':
 			return {...state, status: {isAuth: action.payload.ok, load: action.payload.message}}
+		case 'log out': 
+			return {...state, status: {isAuth: false, load: null}}
 		default: 
 			return state
 	}

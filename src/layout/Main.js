@@ -3,6 +3,7 @@ import withRoot from '../withRoot'
 import AppAppBar from '../components/AppAppBar2'
 import {pages} from './pages/main'
 import io from 'socket.io-client'
+import BGSITE from '../images/BGSITE.svg';
 
 function App(props) {
   const socket = io('http://localhost:3100');
@@ -24,7 +25,7 @@ function App(props) {
   })
 
   return (
-    <div className="App">
+    <div className="App" style={{background: `url(${BGSITE}) no-repeat`, backgroundSize: 'cover'}}>
       <AppAppBar/>
         {pages}
     </div>
